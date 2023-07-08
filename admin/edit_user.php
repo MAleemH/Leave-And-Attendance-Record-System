@@ -85,7 +85,7 @@ include '../includes/admin_sidebar.php';
                                 <option value="<?php echo $user_role; ?>"><?php echo $user_role; ?></option>
                                 <?php
                                 if ($user_role == 'Admin') {
-                                    echo "<option value='User'>User</option>";
+                                    echo "<option value='Employee'>Employee</option>";
                                 } else {
                                     echo "<option value='Admin'>Admin</option>";
                                 }

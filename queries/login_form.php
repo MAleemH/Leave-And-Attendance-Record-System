@@ -56,7 +56,7 @@ if (isset($_POST['login'])) {
 
             break;
 
-        case 'User':
+        case 'Employee':
 
             $user_email = $_POST['user_email'];
             $user_password = $_POST['user_password'];
@@ -94,7 +94,7 @@ if (isset($_POST['login'])) {
                 $_SESSION['user_image'] = $db_user_image;
                 $_SESSION['user_role'] = $db_user_role;
 
-                header("Location: ../user/index.php");
+                header("Location: ../employee/index.php");
 
             } else {
                 $error = "Invalid username or password!";

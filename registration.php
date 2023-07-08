@@ -42,7 +42,7 @@
               <label class="form-label text-white fw-bold">Role</label>
               <select class="form-select" name="user_role">
                   <option value="Admin">Admin</option>
-                  <option value="User">User</option>
+                  <option value="Employee">Employee</option>
               </select>
             </div>
             <input type="hidden" name="return_url" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
