@@ -14,11 +14,11 @@ include '../includes/admin_sidebar.php';
             <div>
                 <form action="../queries/registration_form.php" method="POST" enctype="multipart/form-data">
                     <div class="mb-3">
-                        <label class="form-label text-white fw-bold">Name</label>
+                        <label class="form-label fw-bold">Name</label>
                         <input type="text" class="form-control" name="user_name" placeholder="Full Name" required>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label text-white fw-bold">Image</label>
+                        <label class="form-label fw-bold">Image</label>
                         <input class="form-control" type="file" name="user_image" required>
                     </div>
                     <div class="mb-3">
@@ -29,22 +29,22 @@ include '../includes/admin_sidebar.php';
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label text-white fw-bold">Contact Number</label>
+                        <label class="form-label fw-bold">Contact Number</label>
                         <input type="text" class="form-control" name="user_contact" placeholder="+923445387545"
                             required>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label text-white fw-bold">Email</label>
+                        <label class="form-label fw-bold">Email</label>
                         <input type="email" class="form-control" name="user_email" placeholder="example@gmail.com"
                             required>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label text-white fw-bold">Password</label>
+                        <label class="form-label fw-bold">Password</label>
                         <input type="password" class="form-control" name="user_password" placeholder="Password"
                             required>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label text-white fw-bold">Role</label>
+                        <label class="form-label fw-bold">Role</label>
                         <select class="form-select" name="user_role">
                             <option value="Admin">Admin</option>
                             <option value="Employee">Employee</option>
