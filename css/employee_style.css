@@ -68,6 +68,14 @@ nav {
     width: 30px;
 }
 
+.form-container {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
 /* footer */
 footer {
     display: flex;
