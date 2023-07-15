@@ -4,6 +4,14 @@
         <a href="index.php">Home</a>
     </div>
     <div class="sidebar-items">
+        <i class="fa-solid fa-clipboard-user"></i>
+        <a href="attendance.php">Attendance</a>
+    </div>
+    <div class="sidebar-items">
+        <i class="fa-solid fa-file"></i>
+        <a href="apply_leave.php">Apply Leave</a>
+    </div>
+    <div class="sidebar-items">
         <i class="fa-solid fa-user"></i>
         <a href="profile.php">Profile</a>
     </div>
