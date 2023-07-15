@@ -33,7 +33,7 @@ include '../includes/user_sidebar.php';
                 </form>
             </div>
             <!-- display attendance -->
-            <div>
+            <div class="mt-2">
                 <?php
                 // Get the selected month and year from the form
                 if (isset($_POST['monthly'])) {
@@ -44,8 +44,11 @@ include '../includes/user_sidebar.php';
                     // Assuming you have stored employee_id in a session after login
                     $employeeId = $_SESSION['user_id'];
 
+                    // Get the last day of the selected month
+                    $lastDayOfMonth = date("t", strtotime($selectedDate));
+
                     // Query to fetch attendance for the selected month and employee
-                    $sql = "SELECT * FROM attendance
+                    $sql = "SELECT DAY(attendance_date) AS day, status FROM attendance
                             WHERE user_id = $employeeId
                             AND YEAR(attendance_date) = $selectedYear
                             AND MONTH(attendance_date) = $selectedMonth";
@@ -53,20 +56,26 @@ include '../includes/user_sidebar.php';
                     $result = mysqli_query($connection, $sql);
 
                     if (mysqli_num_rows($result) > 0) {
-                        // Display the attendance records
-                        echo "<h2>Monthly Attendance - " . date("F Y", strtotime($selectedDate)) . "</h2>";
-                        echo "<table>";
-                        echo "<tr><th>Date</th><th>Time In</th><th>Time Out</th></tr>";
-
+                        // Create an empty attendance array for all days in the month
+                        $attendanceData = array_fill(1, $lastDayOfMonth, 'Absent');
+                
+                        // Populate the attendance array with fetched data
                         while ($row = mysqli_fetch_assoc($result)) {
-                            echo "<tr>";
-                            echo "<td>" . $row['attendance_date'] . "</td>";
-                            echo "<td>" . $row['time_in'] . "</td>";
-                            echo "<td>" . $row['time_out'] . "</td>";
-                            echo "</tr>";
+                            $attendanceData[$row['day']] = $row['status'];
                         }
-
-                        echo "</table>";
+                
+                        // Display the attendance table
+                        echo "<div class='monthly'>";
+                
+                        // Generate headers for the days in the selected month
+                        for ($day = 1; $day <= $lastDayOfMonth; $day++) {
+                            $attendanceStatus = $attendanceData[$day];
+                            echo '<div class="' . ($attendanceStatus == 'Present' ? 'present' : 'absent') . ' monthly-item">';
+                            echo $day . '<br>' . $attendanceStatus;
+                            echo '</div>';
+                        }
+                
+                        echo "</div>";
                     } else {
                         echo "No attendance records found for the selected month.";
                     }
