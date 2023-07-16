@@ -12,24 +12,32 @@ include '../includes/user_sidebar.php';
                 <a href="mark_attendance.php" class='btn btn-success m-1'>Mark Attendance</a>
             </div>
             <!-- toggle buttons -->
-            <div>
-                <button type="button" onclick="toggleForm('monthlyForm')">Monthly</button>
-                <button type="button" onclick="toggleForm('yearlyForm')">Yearly</button>
+            <div class="mb-2">
+                <button type="button" class="btn btn-warning" onclick="toggleForm('monthlyForm')">Monthly</button>
+                <button type="button" class="btn btn-warning" onclick="toggleForm('yearlyForm')">Yearly</button>
             </div>
             <!-- monthly form -->
             <div id="monthlyForm" class="form-container">
                 <form action="" method="POST">
-                    <label for="month">Month:</label>
-                    <input type="month" name="month" required>
-                    <button type="submit" name="monthly">View Attendance</button>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Month:</label>
+                        <input type="month" class="form-control w-25" name="month" required>
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary" name="monthly">View Attendance</button>
+                    </div>
                 </form>
             </div>
             <!-- yearly form -->
             <div id="yearlyForm" class="form-container">
                 <form action="" method="POST">
-                    <label for="month">Year:</label>
-                    <input type="number" name="year" min="2000" max="2099" required>
-                    <button type="submit" name="yearly">View Attendance</button>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Year:</label>
+                        <input type="number" class="form-control w-25" name="year" min="2000" max="2099" placeholder="2023" required>
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary" name="yearly">View Attendance</button>
+                    </div>
                 </form>
             </div>
             <!-- display attendance -->
@@ -56,6 +64,7 @@ include '../includes/user_sidebar.php';
                     $result = mysqli_query($connection, $sql);
 
                     if (mysqli_num_rows($result) > 0) {
+                        echo "<h5>Monthly Attendance - " . date("F Y", strtotime($selectedDate)) . "</h5>";
                         // Create an empty attendance array for all days in the month
                         $attendanceData = array_fill(1, $lastDayOfMonth, 'Absent');
                 
