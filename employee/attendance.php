@@ -95,27 +95,43 @@ include '../includes/user_sidebar.php';
                     $employeeId = $_SESSION['user_id'];
 
                     // Query to fetch attendance for the selected year and employee
-                    $sql = "SELECT * FROM attendance
+                    $sql = "SELECT MONTH(attendance_date) AS month, DAY(attendance_date) AS day, status FROM attendance
                             WHERE user_id = $employeeId
-                            AND YEAR(attendance_date) = $selectedYear";
+                            AND YEAR(attendance_date) = $selectedYear
+                            ORDER BY attendance_date"; // Sort records by date
 
                     $result = mysqli_query($connection, $sql);
 
                     if (mysqli_num_rows($result) > 0) {
-                        // Display the attendance records
-                        echo "<h2>Yearly Attendance - " . $selectedYear . "</h2>";
-                        echo "<table>";
-                        echo "<tr><th>Date</th><th>Time In</th><th>Time Out</th></tr>";
+                        echo "<h5>Yearly Attendance - " . $selectedYear . "</h5>";
+                        $attendanceData = array();
 
+                        // Populate the attendance data array
                         while ($row = mysqli_fetch_assoc($result)) {
-                            echo "<tr>";
-                            echo "<td>" . $row['attendance_date'] . "</td>";
-                            echo "<td>" . $row['time_in'] . "</td>";
-                            echo "<td>" . $row['time_out'] . "</td>";
-                            echo "</tr>";
+                            $month = $row['month'];
+                            $day = $row['day'];
+                            $status = $row['status'];
+
+                            $attendanceData[$month][$day] = $status;
                         }
 
-                        echo "</table>";
+                        // Display the attendance tables for each month
+                        for ($month = 1; $month <= 12; $month++) {
+                            echo "<h5>" . date("F", mktime(0, 0, 0, $month, 1)) . " " . $selectedYear . "</h5>";
+
+                            // Display the attendance table
+                            echo "<div class='monthly'>";
+
+                            // Loop through all days in the month
+                            for ($day = 1; $day <= cal_days_in_month(CAL_GREGORIAN, $month, $selectedYear); $day++) {
+                                $attendanceStatus = isset($attendanceData[$month][$day]) ? $attendanceData[$month][$day] : 'Absent';
+                                echo '<div class="' . ($attendanceStatus == 'Present' ? 'present' : 'absent') . ' monthly-item">';
+                                echo $day . '<br>' . $attendanceStatus;
+                                echo '</div>';
+                            }
+
+                            echo "</div>";
+                        }
                     } else {
                         echo "No attendance records found for the selected year.";
                     }
