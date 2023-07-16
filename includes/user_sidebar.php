@@ -9,7 +9,7 @@
     </div>
     <div class="sidebar-items">
         <i class="fa-solid fa-file"></i>
-        <a href="apply_leave.php">Apply Leave</a>
+        <a href="applied_leaves.php">Apply Leave</a>
     </div>
     <div class="sidebar-items">
         <i class="fa-solid fa-user"></i>
