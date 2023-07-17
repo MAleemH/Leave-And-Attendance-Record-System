@@ -97,6 +97,10 @@ nav {
     background-color: #ffb3b3;
 }
 
+.on-leave {
+    background-color: #ffffb3;
+}
+
 /* footer */
 footer {
     display: flex;
