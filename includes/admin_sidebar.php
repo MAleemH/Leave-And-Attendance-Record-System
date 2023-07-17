@@ -12,6 +12,10 @@
         <a href="leaves.php">Leaves</a>
     </div>
     <div class="sidebar-items">
+        <i class="fa-solid fa-receipt"></i>
+        <a href="leave_requests.php">Leave Requests</a>
+    </div>
+    <div class="sidebar-items">
         <i class="fa-solid fa-user"></i>
         <a href="profile.php">Profile</a>
     </div>
