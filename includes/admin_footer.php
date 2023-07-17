@@ -12,6 +12,18 @@
     window.history.back();
   }
 </script>
+<script>
+  function toggleForm(formId) {
+    var forms = document.getElementsByClassName('form-container');
+    for (var i = 0; i < forms.length; i++) {
+      if (forms[i].id === formId) {
+        forms[i].classList.add('visible');
+      } else {
+        forms[i].classList.remove('visible');
+      }
+    }
+  }
+</script>
 <!-- Bootstrap JavaScript Libraries -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
   integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">

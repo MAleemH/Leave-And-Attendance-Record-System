@@ -16,6 +16,10 @@
         <a href="leave_requests.php">Leave Requests</a>
     </div>
     <div class="sidebar-items">
+        <i class="fa-solid fa-clipboard-user"></i>
+        <a href="attendance_record.php">Attendance Record</a>
+    </div>
+    <div class="sidebar-items">
         <i class="fa-solid fa-user"></i>
         <a href="profile.php">Profile</a>
     </div>
