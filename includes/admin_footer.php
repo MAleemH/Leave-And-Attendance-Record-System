@@ -1,0 +1,37 @@
+<footer class="fixed-bottom">
+  <p>
+    © 2023 Leave and Attendance Record System, All rights reserved.
+  </p>
+</footer>
+<!-- custom js -->
+<script>
+  function savePageHistory() {
+    sessionStorage.setItem('previousPage', window.location.href);
+  }
+  function goBack() {
+    window.history.back();
+  }
+</script>
+<script>
+  function toggleForm(formId) {
+    var forms = document.getElementsByClassName('form-container');
+    for (var i = 0; i < forms.length; i++) {
+      if (forms[i].id === formId) {
+        forms[i].classList.add('visible');
+      } else {
+        forms[i].classList.remove('visible');
+      }
+    }
+  }
+</script>
+<!-- Bootstrap JavaScript Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+  integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+  integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>
